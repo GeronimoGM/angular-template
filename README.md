@@ -1,59 +1,165 @@
-# AngularStarter
+# Angular Template
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.0.
+Modern Angular starter template focused on scalability, developer experience, accessibility, and clean architecture.
 
-## Development server
+## Stack
 
-To start a local development server, run:
+- Angular 21+
+- Standalone Components
+- Tailwind CSS v4
+- Tailwind Animations
+- NgRx Signals
+- ESLint + Prettier
+- pnpm
 
-```bash
-ng serve
+# Setup
+
+## 1. Rename the project
+
+Update the project name in:
+
+### `package.json`
+
+```json
+{
+  "name": "my-project"
+}
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### `angular.json`
 
-## Code scaffolding
+Replace `angular-starter` with your project name.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 2. Install dependencies
 
 ```bash
-ng generate --help
+pnpm install
 ```
 
-## Building
-
-To build the project run:
+## 3. Start development server
 
 ```bash
-ng build
+pnpm start
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+# Included Features
 
-## Running unit tests
+## Angular
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+- Standalone Components only
+- Modern Angular APIs
+- Signal-based state management
+- Lazy loading ready
+- SSR compatible structure
+
+## NgRx
+
+Included packages:
+
+- `@ngrx/signals`
+- `@ngrx/operators`
+
+Recommended for:
+
+- Local signal stores
+- Reactive derived state
+- Predictable state updates
+
+## Tailwind CSS v4
+
+Configured with:
+
+- `prettier-plugin-tailwindcss`
+- `tailwind-animations`
+- Tailwind IntelliSense support
+- Angular class binding autocomplete support
+- Identity function for proper class sorting and formatting (`tw`)
+
+## Code Quality
+
+### ESLint
+
+Preconfigured for:
+
+- Angular
+- TypeScript
+- Accessibility
+- Best practices
+
+### Prettier
+
+Integrated with:
+
+- Tailwind class sorting
+- Consistent formatting
+
+## Developer Experience
+
+Included improvements:
+
+- Path aliases
+- Clean folder structure
+- Strict TypeScript configuration
+
+# Optional Features
+
+## Icons
+
+Recommended package:
 
 ```bash
-ng test
+pnpm add @ng-icons/core @ng-icons/tabler-icons
 ```
 
-## Running end-to-end tests
+Useful for:
 
-For end-to-end (e2e) testing, run:
+- Tree-shakeable icons
+- Better bundle size
+- Easy icon management
+
+## Progress Bar
+
+Useful for route transition feedback.
+
+### 1. Install package
 
 ```bash
-ng e2e
+pnpm add ngx-progressbar
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+### 2. Configure router progress
 
-## Additional Resources
+Add `provideNgProgressRouter` in `app.config.ts`.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```ts
+provideNgProgressRouter({
+  startEvents: [GuardsCheckEnd],
+  completeEvents: [NavigationEnd],
+  minDuration: 250,
+}),
+```
+
+### 3. Add component
+
+```html
+<ng-progress ngProgressRouter />
+```
+
+### 4. Customize styles
+
+```css
+:root {
+  --ng-progress-color: var(--color-black);
+}
+
+.dark {
+  --ng-progress-color: var(--color-white);
+}
+```
+
+# Recommended VSCode Extensions
+
+- Angular Language Service
+- ESLint
+- Prettier
+- Tailwind CSS IntelliSense

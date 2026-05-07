@@ -1,0 +1,67 @@
+version: 2
+
+updates:
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+
+    open-pull-requests-limit: 10
+
+    labels:
+      - 'dependencies'
+
+    commit-message:
+      prefix: 'deps'
+
+    groups:
+      angular:
+        patterns:
+          - '@angular*'
+          - 'angular-eslint'
+
+      ngrx:
+        patterns:
+          - '@ngrx*'
+
+      tailwind:
+        patterns:
+          - 'tailwindcss'
+          - '@tailwindcss*'
+          - 'tailwind-animations'
+          - 'prettier-plugin-tailwindcss'
+
+      linting:
+        patterns:
+          - 'eslint'
+          - '@eslint*'
+          - 'typescript-eslint'
+          - 'eslint-config-prettier'
+          - 'prettier'
+
+      types:
+        patterns:
+          - '@types*'
+
+      testing:
+        patterns:
+          - 'vitest'
+          - 'jsdom'
+
+      tooling:
+        patterns:
+          - 'typescript'
+          - 'postcss'
+          - 'rxjs'
+          - 'tslib'
+
+    ignore:
+      # Angular majors usually require migrations
+      - dependency-name: '@angular*'
+        update-types:
+          - 'version-update:semver-major'
+
+      # TypeScript majors may break Angular tooling
+      - dependency-name: 'typescript'
+        update-types:
+          - 'version-update:semver-major'

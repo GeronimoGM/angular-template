@@ -1,4 +1,7 @@
 {
+  "endOfLine": "lf",
+  "arrowParens": "avoid",
+  "trailingComma": "es5",
   "printWidth": 100,
   "singleQuote": true,
   "overrides": [
@@ -8,5 +11,7 @@
         "parser": "angular"
       }
     }
-  ]
+  ],
+  "plugins": ["prettier-plugin-tailwindcss"],
+  "tailwindFunctions": ["tw"]
 }
