@@ -1,0 +1,16 @@
+{
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always"
+  },
+  "eslint.useFlatConfig": true,
+  "eslint.validate": ["javascript", "typescript", "html"],
+  "tailwindCSS.classFunctions": ["tw"],
+  "tailwindCSS.experimental.classRegex": [
+    "class: ['`]([^'`]*)['`]", // class: 'foo bar' or class: `foo bar`
+    ["'\\[class\\]': '([^']*)'", "\"([^\"]*)\""], // '[class]': 'foo ? "bar" : "baz"'
+    ["'\\[class\\]': `([^`]*)`", "'([^']*)'"], // '[class]': `foo ? 'bar' : 'baz'`
+    "\\[class\\.([^\\]]*)\\]", // '[class.foo]': 'bar' or [class.foo]="bar"
+    "'animate\\.(?:enter|leave)': '([^']*)'" // 'animate.enter': 'foo bar' or 'animate.leave': 'foo bar'
+  ]
+}
