@@ -1,12 +1,10 @@
 {
+  "endOfLine": "lf",
+  "arrowParens": "avoid",
+  "trailingComma": "es5",
   "printWidth": 100,
   "singleQuote": true,
-  "overrides": [
-    {
-      "files": "*.html",
-      "options": {
-        "parser": "angular"
-      }
-    }
-  ]
+  "overrides": [{ "files": "*.html", "options": { "parser": "angular" } }],
+  "plugins": ["prettier-plugin-tailwindcss", "prettier-plugin-organize-imports"],
+  "tailwindFunctions": ["hlm", "cva", "classes"]
 }
