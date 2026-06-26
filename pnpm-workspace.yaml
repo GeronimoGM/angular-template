@@ -5,3 +5,5 @@ allowBuilds:
   lmdb: true
   msgpackr-extract: true
   nx: true
+minimumReleaseAgeExclude:
+  - tw-spacing-semantics-plugin@1.0.0
