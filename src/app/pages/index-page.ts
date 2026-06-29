@@ -1,3 +1,4 @@
+import { Container } from '@/shared/components/container';
 import { ThemeService } from '@/shared/services/theme-service';
 import { Component, inject } from '@angular/core';
 import { NgIcon, provideIcons } from '@ng-icons/core';
@@ -6,9 +7,9 @@ import { HlmButtonImports } from '@spartan-ng/helm/button';
 
 @Component({
   selector: 'app-index-page',
-  imports: [HlmButtonImports, NgIcon],
+  imports: [HlmButtonImports, NgIcon, Container],
   template: `
-    <div class="flex min-h-svh p-6">
+    <div app-container class="flex min-h-svh p-6">
       <div class="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
         <div>
           <h1 class="font-heading text-2xl">Project ready!</h1>
