@@ -78,6 +78,10 @@
   --font-heading: var(--font-heading);
 }
 
+@utility container {
+  padding-inline: 0;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

@@ -6,7 +6,7 @@ import { classes } from '@spartan-ng/helm/utils';
   imports: [],
   template: `<ng-content />`,
   host: {
-    class: 'container mx-auto max-w-7xl',
+    class: 'container max-w-7xl',
   },
 })
 export class Container {
