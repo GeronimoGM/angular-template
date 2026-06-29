@@ -11,7 +11,7 @@ import { HlmButtonImports } from '@spartan-ng/helm/button';
     <div class="flex min-h-svh p-6">
       <div class="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
         <div>
-          <h1 class="font-medium">Project ready!</h1>
+          <h1 class="font-heading text-2xl">Project ready!</h1>
           <p>You may now add components and start building.</p>
           <p>We&apos;ve already added the button component for you.</p>
           <button hlmBtn data-icon="inline-start" class="mt-2" (click)="changeTheme()">
