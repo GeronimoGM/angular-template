@@ -1,14 +1,13 @@
 # Icons
 
-spartan/ui renders icons with [`@ng-icons`](https://ng-icons.github.io/ng-icons). The default set is
-Lucide (`@ng-icons/lucide`).
+spartan/ui renders icons with [`@ng-icons`](https://ng-icons.github.io/ng-icons). The default set is Tabler icons (`@ng-icons/tabler-icons`).
 
 ## The element
 
 Icons are an `<ng-icon>` element with the `name`:
 
 ```html
-<ng-icon name="lucideChevronRight" />
+<ng-icon name="tablerChevronRight" />
 ```
 
 ## Register every icon
@@ -19,15 +18,13 @@ Icon names are not global - each icon you reference must be provided to the comp
 ```ts
 import { Component } from '@angular/core';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { lucideChevronRight, lucideTrash } from '@ng-icons/lucide';
+import { tablerChevronRight, tablerTrash } from '@ng-icons/tabler-icons';
 
 @Component({
-	selector: 'app-example',
-	imports: [NgIcon],
-	providers: [provideIcons({ lucideChevronRight })],
-	template: `
-		<ng-icon name="lucideChevronRight" />
-	`,
+  selector: 'app-example',
+  imports: [NgIcon],
+  providers: [provideIcons({ tablerChevronRight })],
+  template: ` <ng-icon name="tablerChevronRight" /> `,
 })
 export class ExampleComponent {}
 ```
@@ -42,10 +39,10 @@ For free-standing decorative icons you may set color with a semantic class
 `<ng-icon>` inherits its size from the font size of its parent. Use a Tailwind font-size utility to scale it, following the spacing scale:
 
 ```html
-<ng-icon name="lucideChevronRight" class="text-[length:--spacing(4)]" />
+<ng-icon name="tablerChevronRight" class="text-[length:--spacing(4)]" />
 ```
 
 ## Installing the icon component
 
 `npx nx g @spartan-ng/cli:ui --name=icon` (or `ng g ...`) installs `@ng-icons/core`,
-`@ng-icons/lucide`, and the Helm icon styles.
+`@ng-icons/tabler-icons`, and the Helm icon styles.
