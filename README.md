@@ -9,41 +9,12 @@ Modern Angular starter template focused on scalability, developer experience, ac
 - spartan/ui
 - Ng Icons (Tabler icons)
 - Prettier
+- ESLint
 - pnpm
 
-# Setup
+## Included Features
 
-## 1. Rename the project
-
-Update the project name in:
-
-### `package.json`
-
-```json
-{
-  "name": "my-project"
-}
-```
-
-### `angular.json`
-
-Replace `angular-starter` with your project name.
-
-## 2. Install dependencies
-
-```bash
-pnpm install
-```
-
-## 3. Start development server
-
-```bash
-pnpm start
-```
-
-# Included Features
-
-## Angular
+### Angular
 
 - Standalone Components only
 - Modern Angular APIs
@@ -51,21 +22,25 @@ pnpm start
 - Lazy loading ready
 - SSR compatible structure
 
-## Tailwind CSS v4
+### Tailwind CSS v4
 
 Configured with:
 
 - `prettier-plugin-tailwindcss`
 - Tailwind IntelliSense support
 
-## Prettier
+### Prettier
 
 Integrated with:
 
 - Tailwind class sorting
 - Consistent formatting
 
-## Developer Experience
+### ESLint
+
+As the default linter for the application.
+
+### Developer Experience
 
 Included improvements:
 
@@ -73,29 +48,29 @@ Included improvements:
 - Clean folder structure
 - Strict TypeScript configuration
 
-# Optional Features
+## Optional Features
 
-## NgRx
+### NgRx
 
 ```bash
 ng add @ngrx/signals@latest @ngrx/operators@latest
 ```
 
-## i18n
+### i18n
 
-### 1. Install dependencies
+#### 1. Install dependencies
 
 ```bash
 ng add @angular/localize ng-extract-i18n-merge
 ```
 
-### 2. Add i18n support for client hydration
+#### 2. Add i18n support for client hydration
 
 ```ts
 provideClientHydration(withI18nSupport()),
 ```
 
-### 3. Add extract i18n script
+#### 3. Add extract i18n script
 
 ```json
 "scripts": {
@@ -103,17 +78,17 @@ provideClientHydration(withI18nSupport()),
 }
 ```
 
-## Progress Bar
+### Progress Bar
 
 Useful for route transition feedback.
 
-### 1. Install package
+#### 1. Install package
 
 ```bash
 pnpm add ngx-progressbar
 ```
 
-### 2. Configure router progress
+#### 2. Configure router progress
 
 Add `provideNgProgressRouter` in `app.config.ts`.
 
@@ -125,13 +100,13 @@ provideNgProgressRouter({
 }),
 ```
 
-### 3. Add component
+#### 3. Add component
 
 ```html
 <ng-progress ngProgressRouter />
 ```
 
-### 4. Customize styles
+#### 4. Customize styles
 
 ```css
 :root {
@@ -143,8 +118,9 @@ provideNgProgressRouter({
 }
 ```
 
-# Recommended VSCode Extensions
+## Recommended VSCode Extensions
 
 - Angular Language Service
-- Prettier
 - Tailwind CSS IntelliSense
+- Prettier
+- ESLint
