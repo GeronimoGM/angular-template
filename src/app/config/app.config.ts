@@ -7,7 +7,12 @@ import { provideSpartanHlm } from '@spartan-ng/helm/utils';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideRouter(routes, withComponentInputBinding()),
+    provideRouter(
+      routes,
+      withComponentInputBinding({
+        unmatchedInputBehavior: 'undefinedIfStale',
+      })
+    ),
     provideClientHydration(),
     provideSpartanHlm(),
   ],
