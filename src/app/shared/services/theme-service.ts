@@ -1,57 +1,101 @@
 import { PlatformService } from '@/shared/services/platform-service';
-import { type Renderer2, RendererFactory2, Service, computed, inject, signal } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import {
+  computed,
+  inject,
+  RendererFactory2,
+  Service,
+  signal
+} from '@angular/core';
 
 export type Theme = 'light' | 'dark';
+
+const THEME_KEY = 'theme' as const;
 
 @Service()
 export class ThemeService {
   constructor() {
-    this.initTheme();
+    this._initTheme();
   }
 
-  private readonly renderer: Renderer2 = inject(RendererFactory2).createRenderer(null, null);
-  private readonly platformService = inject(PlatformService);
-  private readonly storageKey = 'theme';
+  private readonly _renderer = inject(RendererFactory2).createRenderer(null, null);
+  private readonly _platform = inject(PlatformService);
+  private readonly _document = inject(DOCUMENT);
+
   private readonly _theme = signal<Theme>('light');
 
   readonly theme = this._theme.asReadonly();
   readonly isDark = computed(() => this._theme() === 'dark');
 
   toggleTheme(): void {
-    this.setTheme(this.isDark() ? 'light' : 'dark');
+    this._setTheme(this.isDark() ? 'light' : 'dark');
   }
 
-  private initTheme(): void {
-    if (this.platformService.isServer()) {
+  private _initTheme(): void {
+    if (this._platform.isServer()) {
       return;
     }
 
-    const savedTheme = localStorage.getItem(this.storageKey) as Theme | null;
+    const savedTheme = localStorage.getItem(THEME_KEY) as Theme | null;
 
     if (savedTheme) {
       this._theme.set(savedTheme);
+      this._applyTheme(savedTheme);
       return;
     }
 
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme: Theme = prefersDark ? 'dark' : 'light';
 
-    this._theme.set(prefersDark ? 'dark' : 'light');
+    this._theme.set(theme);
+    this._applyTheme(theme);
   }
 
-  private setTheme(theme: Theme): void {
+  private _setTheme(theme: Theme): void {
     this._theme.set(theme);
 
-    if (this.platformService.isServer()) {
+    if (this._platform.isServer()) {
       return;
     }
 
-    localStorage.setItem(this.storageKey, theme);
+    localStorage.setItem(THEME_KEY, theme);
 
+    this._disableTransitions(() => {
+      this._applyTheme(theme);
+    });
+  }
+
+  private _applyTheme(theme: Theme): void {
     if (theme === 'dark') {
-      this.renderer.addClass(document.documentElement, 'dark');
+      this._renderer.addClass(this._document.documentElement, 'dark');
       return;
     }
 
-    this.renderer.removeClass(document.documentElement, 'dark');
+    this._renderer.removeClass(this._document.documentElement, 'dark');
+  }
+
+  private _disableTransitions(callback: () => void): void {
+    const style = this._renderer.createElement('style') as HTMLStyleElement;
+
+    style.textContent = `
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+        animation: none !important;
+      }
+    `;
+
+    this._renderer.appendChild(this._document.head, style);
+
+    callback();
+
+    void this._document.documentElement.offsetHeight;
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        this._renderer.removeChild(this._document.head, style);
+      });
+    });
   }
 }
