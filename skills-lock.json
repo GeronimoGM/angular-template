@@ -12,10 +12,11 @@
       "skillPath": "angular-developer/SKILL.md",
       "computedHash": "e6400c4e948ba8c9d002509e9a482862c189f96938e01655f56a1e9a4533cb19"
     },
-    "frontend-design": {
-      "source": "anthropics/skills",
-      "sourceType": "autoskills-registry",
-      "computedHash": "82fb11a63fb1e35ee2469516ed02d54695f783115b1540c0e783197af4240a3a"
+    "impeccable": {
+      "source": "pbakaus/impeccable",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/impeccable/SKILL.md",
+      "computedHash": "00b134eba8360947c2c72d09ded6b84b1ed742876b9305196f10b8cbebfd6019"
     },
     "seo": {
       "source": "addyosmani/web-quality-skills",
